@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLOWLEADS - AI-Powered Client Acquisition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a2e;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #10b981;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #555;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #f8f9fc;
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .how-it-works .section-title h2,
+        .how-it-works .section-title p {
+            color: white;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            border: 2px solid white;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* Benefits */
+        .benefits {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .benefits-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .benefits-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .benefits-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-check {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .benefit-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .benefit-text p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .benefits-visual {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            background: #1a1a2e;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-section .cta-button {
+            background: white;
+            color: #10b981;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            background: #0f0f1a;
+            color: white;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        footer p {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title h2,
+            .benefits-content h2,
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .steps {
+                gap: 2rem;
+            }
+
+            .benefits-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">FLOWLEADS</div>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#contact" class="nav-cta">Get Started</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Accelerate Client Acquisition with <span>AI Automation</span></h1>
+            <p>Transform your client pipeline with intelligent automation solutions. We deliver qualified leads through precision-targeted advertising, strategic SMS outreach, and data-driven re-engagement campaigns.</p>
+            <a href="#contact" class="cta-button">Schedule a Consultation</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Our Solutions</h2>
+            <p>Comprehensive automation services designed to maximize your client acquisition and retention</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">&#128640;</div>
+            <h3>Intelligent Advertising</h3>
+                <p>Data-driven ad campaigns that identify and target your ideal customer profile, optimizing for conversions and maximizing your return on ad spend.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128172;</div>
+            <h3>Strategic SMS Outreach</h3>
+                <p>Personalized, automated text communication that nurtures prospects through your sales funnel with timely, relevant messaging.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#127873;</div>
+            <h3>Promotional Campaigns</h3>
+                <p>Strategically timed offers and incentives that drive bookings during key periods and increase overall revenue.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128276;</div>
+            <h3>Client Reactivation</h3>
+                <p>Automated outreach to dormant clients with personalized messaging that reignites relationships and drives repeat business.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-title">
+            <h2>Streamlined Implementation</h2>
+            <p>A proven process designed for rapid deployment and measurable results</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Discovery</h3>
+                <p>We analyze your business, target market, and integrate with your existing systems</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Deploy</h3>
+                <p>We implement customized automation workflows tailored to your specific objectives</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Scale</h3>
+                <p>Monitor performance metrics and optimize campaigns for continuous improvement</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits" id="benefits">
+        <div class="benefits-container">
+            <div class="benefits-content">
+                <h2>The FLOWLEADS Advantage</h2>
+                <div class="benefit-item">
+                    <div class="benefit-check">&#10003;</div>
+                    <div class="benefit-text">
+                        <h4>Operational Efficiency</h4>
+                        <p>Eliminate manual follow-ups and streamline your client acquisition process</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">&#10003;</div>
+                    <div class="benefit-text">
+                        <h4>24/7 Lead Response</h4>
+                        <p>Instant automated engagement ensures no opportunity is left unattended</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">&#10003;</div>
+                    <div class="benefit-text">
+                        <h4>Revenue Growth</h4>
+                        <p>Maximize client lifetime value through systematic re-engagement strategies</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">&#10003;</div>
+                    <div class="benefit-text">
+                        <h4>Scalable Solutions</h4>
+                        <p>Flexible infrastructure that grows alongside your business needs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="benefits-visual">
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-number">3x</div>
+                        <div class="stat-label">Booking Increase</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">Response Rate</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Hours Saved Weekly</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Client Return Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <h2>Ready to Transform Your Client Acquisition?</h2>
+        <p>Partner with FLOWLEADS and leverage AI-powered automation to drive sustainable growth</p>
+        <a href="mailto:hello@flowleads.com" class="cta-button">Request a Consultation</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">FLOWLEADS</div>
+        <p>&copy; 2026 FLOWLEADS. All rights reserved.</p>
+    </footer>
+
+    <!-- Smooth Scrolling -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
