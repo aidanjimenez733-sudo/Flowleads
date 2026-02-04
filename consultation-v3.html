@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Consultation - FLOWLEADS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #0f0f1a;
+            min-height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #10b981;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 8rem 5% 4rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header h1 span {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .option-card {
+            background: #1a1a2e;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 2px solid #2a2a4e;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .option-card:hover, .option-card.selected {
+            border-color: #10b981;
+            transform: translateY(-5px);
+        }
+
+        .option-card.selected {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+        }
+
+        .option-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-card h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card p {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        .form-section {
+            background: #1a1a2e;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-section h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #2a2a4e;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: #0f0f1a;
+            color: white;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #555;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: #10b981;
+        }
+
+        .checkbox-group label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .checkbox-group a {
+            color: #10b981;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 1.125rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            text-align: center;
+            color: #666;
+        }
+
+        .trust-badge .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .trust-badge .label {
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .form-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">FLOWLEADS</a>
+        <a href="index.html" class="back-link">&larr; Back</a>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Let's <span>Automate</span> Your Client Growth</h1>
+            <p>Select the service you're most interested in</p>
+        </div>
+
+        <div class="options-grid">
+            <div class="option-card" onclick="selectOption(this, 'sms')">
+                <div class="option-icon">&#128172;</div>
+                <h3>SMS Automation</h3>
+                <p>Automated reminders, confirmations & follow-ups</p>
+            </div>
+            <div class="option-card" onclick="selectOption(this, 'reactivation')">
+                <div class="option-icon">&#128276;</div>
+                <h3>Client Reactivation</h3>
+                <p>Win back dormant clients with targeted campaigns</p>
+            </div>
+            <div class="option-card" onclick="selectOption(this, 'full')">
+                <div class="option-icon">&#128640;</div>
+                <h3>Full Suite</h3>
+                <p>Complete automation package for maximum growth</p>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Tell Us About Your Business</h2>
+
+            <form id="consultForm">
+                <input type="hidden" id="selectedService" name="service" value="">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Smith">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="john@yourbusiness.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                </div>
+
+                <div class="form-group">
+                    <label for="business">Business Name & Type</label>
+                    <input type="text" id="business" name="business" required placeholder="e.g., Elite Cuts Barbershop">
+                </div>
+
+                <div class="form-group">
+                    <label for="goals">What's your biggest challenge right now?</label>
+                    <textarea id="goals" name="goals" placeholder="e.g., Too many no-shows, not enough repeat clients, spending too much time on follow-ups..."></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="smsConsent" name="smsConsent" required>
+                    <label for="smsConsent">I agree to receive SMS and email communications from FLOWLEADS. View our <a href="privacy.html">Privacy Policy</a> and <a href="sms-terms.html">SMS Terms</a>.</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Request My Free Consultation</button>
+            </form>
+
+            <script>
+                document.getElementById('consultForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    const business = document.getElementById('business').value;
+                    const goals = document.getElementById('goals').value;
+                    const service = document.getElementById('selectedService').value || 'Not selected';
+
+                    const subject = encodeURIComponent('Consultation Request from ' + name);
+                    const body = encodeURIComponent(
+                        'Name: ' + name + '\n' +
+                        'Email: ' + email + '\n' +
+                        'Phone: ' + phone + '\n' +
+                        'Business: ' + business + '\n' +
+                        'Service Interest: ' + service + '\n\n' +
+                        'Biggest Challenge:\n' + goals
+                    );
+
+                    window.location.href = 'mailto:hello@flowleads.com?subject=' + subject + '&body=' + body;
+                });
+            </script>
+        </div>
+
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <div class="number">500+</div>
+                <div class="label">Businesses Served</div>
+            </div>
+            <div class="trust-badge">
+                <div class="number">2M+</div>
+                <div class="label">Messages Sent</div>
+            </div>
+            <div class="trust-badge">
+                <div class="number">98%</div>
+                <div class="label">Client Satisfaction</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectOption(element, service) {
+            document.querySelectorAll('.option-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            document.getElementById('selectedService').value = service;
+        }
+    </script>
+</body>
+</html>

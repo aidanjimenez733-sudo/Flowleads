@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Consultation - FLOWLEADS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #10b981;
+            font-weight: 500;
+        }
+
+        .page-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            padding: 8rem 5% 4rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left-panel h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .left-panel p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-list {
+            list-style: none;
+        }
+
+        .benefit-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .benefit-list .check {
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .right-panel {
+            flex: 1;
+            padding: 8rem 5% 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fc;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .form-container h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #1a1a2e;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e4e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: white;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .privacy-note {
+            text-align: center;
+            margin-top: 1rem;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .privacy-note a {
+            color: #10b981;
+        }
+
+        @media (max-width: 900px) {
+            .page-container {
+                flex-direction: column;
+            }
+            .left-panel {
+                padding: 7rem 5% 3rem;
+            }
+            .left-panel h1 {
+                font-size: 2rem;
+            }
+            .right-panel {
+                padding: 3rem 5%;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">FLOWLEADS</a>
+        <a href="index.html" class="back-link">&larr; Back</a>
+    </nav>
+
+    <div class="page-container">
+        <div class="left-panel">
+            <h1>Grow Your Business with SMS Automation</h1>
+            <p>Join businesses that have transformed their client engagement with our AI-powered platform.</p>
+
+            <ul class="benefit-list">
+                <li><span class="check">&#10003;</span> Reduce no-shows by up to 70%</li>
+                <li><span class="check">&#10003;</span> Increase repeat bookings by 40%</li>
+                <li><span class="check">&#10003;</span> Save 10+ hours per week on follow-ups</li>
+                <li><span class="check">&#10003;</span> 85% average SMS open rate</li>
+                <li><span class="check">&#10003;</span> Setup in under 48 hours</li>
+            </ul>
+        </div>
+
+        <div class="right-panel">
+            <div class="form-container">
+                <h2>Schedule Your Free Consultation</h2>
+
+                <form id="consultForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Work Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="business">Business Name</label>
+                        <input type="text" id="business" name="business" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry">Industry</label>
+                        <select id="industry" name="industry" required>
+                            <option value="">Select your industry</option>
+                            <option value="barbershop">Barbershop</option>
+                            <option value="salon">Hair Salon</option>
+                            <option value="spa">Spa / Wellness</option>
+                            <option value="dental">Dental Practice</option>
+                            <option value="medical">Medical Practice</option>
+                            <option value="fitness">Fitness / Gym</option>
+                            <option value="restaurant">Restaurant</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clients">Monthly Client Volume</label>
+                        <select id="clients" name="clients" required>
+                            <option value="">Select range</option>
+                            <option value="0-100">0 - 100 clients</option>
+                            <option value="100-500">100 - 500 clients</option>
+                            <option value="500-1000">500 - 1,000 clients</option>
+                            <option value="1000+">1,000+ clients</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Book My Consultation</button>
+
+                    <p class="privacy-note">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a></p>
+                </form>
+
+                <script>
+                    document.getElementById('consultForm').addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        const firstName = document.getElementById('firstName').value;
+                        const lastName = document.getElementById('lastName').value;
+                        const email = document.getElementById('email').value;
+                        const phone = document.getElementById('phone').value;
+                        const business = document.getElementById('business').value;
+                        const industry = document.getElementById('industry').value;
+                        const clients = document.getElementById('clients').value;
+
+                        const subject = encodeURIComponent('Consultation Request from ' + firstName + ' ' + lastName);
+                        const body = encodeURIComponent(
+                            'Name: ' + firstName + ' ' + lastName + '\n' +
+                            'Email: ' + email + '\n' +
+                            'Phone: ' + phone + '\n' +
+                            'Business: ' + business + '\n' +
+                            'Industry: ' + industry + '\n' +
+                            'Monthly Clients: ' + clients
+                        );
+
+                        window.location.href = 'mailto:hello@flowleads.com?subject=' + subject + '&body=' + body;
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
