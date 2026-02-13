@@ -227,7 +227,10 @@
             <div class="form-container">
                 <h2>Schedule Your Free Consultation</h2>
 
-                <form id="consultForm">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="0798602c-3ebd-4bdc-94a8-6fbe8161ed8d">
+                    <input type="hidden" name="redirect" value="https://aidanjimenez733-sudo.github.io/Flowleads/thank-you.html">
+                    <input type="hidden" name="subject" value="New Consultation Request - FLOWLEADS">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name</label>
@@ -285,30 +288,6 @@
                     <p class="privacy-note">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a></p>
                 </form>
 
-                <script>
-                    document.getElementById('consultForm').addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        const firstName = document.getElementById('firstName').value;
-                        const lastName = document.getElementById('lastName').value;
-                        const email = document.getElementById('email').value;
-                        const phone = document.getElementById('phone').value;
-                        const business = document.getElementById('business').value;
-                        const industry = document.getElementById('industry').value;
-                        const clients = document.getElementById('clients').value;
-
-                        const subject = encodeURIComponent('Consultation Request from ' + firstName + ' ' + lastName);
-                        const body = encodeURIComponent(
-                            'Name: ' + firstName + ' ' + lastName + '\n' +
-                            'Email: ' + email + '\n' +
-                            'Phone: ' + phone + '\n' +
-                            'Business: ' + business + '\n' +
-                            'Industry: ' + industry + '\n' +
-                            'Monthly Clients: ' + clients
-                        );
-
-                        window.location.href = 'mailto:flowleads8@gmail.com?subject=' + subject + '&body=' + body;
-                    });
-                </script>
             </div>
         </div>
     </div>
