@@ -229,11 +229,7 @@
             <div class="form-container">
                 <h2>Schedule Your Free Consultation</h2>
 
-                <form action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="0798602c-3ebd-4bdc-94a8-6fbe8161ed8d">
-                    <input type="hidden" name="redirect" value="https://aidanjimenez733-sudo.github.io/Flowleads/thank-you.html">
-                    <input type="hidden" name="subject" value="New Consultation Request - FLOWLEADS">
-                    <input type="hidden" name="from_name" value="FLOWLEADS">
+                <form id="consultForm">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name</label>
@@ -286,15 +282,46 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="submit-btn">Book My Consultation</button>
+                    <button type="submit" class="submit-btn">Schedule a Meeting</button>
 
                     <p class="privacy-note">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a></p>
                 </form>
 
-                <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e4e8f0;">
-                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.75rem;">Or skip the form and book directly</p>
-                    <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/flowleads8/30min'});return false;" style="width: 100%; background: linear-gradient(135deg, #0066cc 0%, #004499 100%); color: white; padding: 1rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;">Schedule a Meeting</button>
-                </div>
+                <script>
+                    document.getElementById('consultForm').addEventListener('submit', function(e) {
+                        e.preventDefault();
+
+                        if (!this.checkValidity()) {
+                            this.reportValidity();
+                            return;
+                        }
+
+                        var formData = new FormData();
+                        formData.append('access_key', '0798602c-3ebd-4bdc-94a8-6fbe8161ed8d');
+                        formData.append('subject', 'New Consultation Request - FLOWLEADS');
+                        formData.append('from_name', 'FLOWLEADS');
+                        formData.append('firstName', document.getElementById('firstName').value);
+                        formData.append('lastName', document.getElementById('lastName').value);
+                        formData.append('email', document.getElementById('email').value);
+                        formData.append('phone', document.getElementById('phone').value);
+                        formData.append('business', document.getElementById('business').value);
+                        formData.append('industry', document.getElementById('industry').value);
+                        formData.append('clients', document.getElementById('clients').value);
+
+                        fetch('https://api.web3forms.com/submit', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        Calendly.initPopupWidget({
+                            url: 'https://calendly.com/flowleads8/30min',
+                            prefill: {
+                                name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
+                                email: document.getElementById('email').value
+                            }
+                        });
+                    });
+                </script>
 
             </div>
         </div>
