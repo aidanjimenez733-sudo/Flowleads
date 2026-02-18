@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Appointment</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .booking-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            max-width: 480px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .booking-header {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .booking-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .booking-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        .booking-body {
+            padding: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            font-family: inherit;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .btn-book {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-book:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+        .sms-consent {
+            margin: 1rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .sms-consent input[type="checkbox"] {
+            margin-top: 3px;
+            width: auto;
+        }
+        .sms-consent label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+        .sms-consent a {
+            color: #10b981;
+        }
+        .powered-by {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+        .powered-by a {
+            color: #10b981;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-card">
+        <div class="booking-header">
+            <h1>Book Your Appointment</h1>
+            <p>Select a date and time that works for you</p>
+        </div>
+        <div class="booking-body">
+            <form action="mailto:flowleads8@gmail.com" method="POST" enctype="text/plain">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name="first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="last_name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" placeholder="(555) 123-4567" required>
+                </div>
+                <div class="form-group">
+                    <label>Service</label>
+                    <select name="service" required>
+                        <option value="">Select a service...</option>
+                        <option value="haircut">Haircut</option>
+                        <option value="color">Color Treatment</option>
+                        <option value="facial">Facial</option>
+                        <option value="massage">Massage</option>
+                        <option value="nails">Nails</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Preferred Date</label>
+                        <input type="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Time</label>
+                        <input type="time" name="time" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Notes (optional)</label>
+                    <textarea name="notes" rows="2" placeholder="Any special requests..."></textarea>
+                </div>
+                <div class="sms-consent">
+                    <input type="checkbox" id="sms-optin" name="sms_optin" required>
+                    <label for="sms-optin">
+                        I agree to receive appointment reminders and updates via SMS.
+                        Msg & data rates may apply. Reply STOP to opt out.
+                        <a href="sms-terms.html">SMS Terms</a> | <a href="privacy.html">Privacy Policy</a>
+                    </label>
+                </div>
+                <button type="submit" class="btn-book">Book Appointment</button>
+            </form>
+        </div>
+        <div class="powered-by">Powered by <a href="https://flowleads.org">FLOWLEADS</a></div>
+    </div>
+</body>
+</html>
