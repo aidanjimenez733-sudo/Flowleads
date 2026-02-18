@@ -308,6 +308,10 @@
                         formData.append('industry', document.getElementById('industry').value);
                         formData.append('clients', document.getElementById('clients').value);
 
+                        // Auto-response email to the client
+                        formData.append('replyto', document.getElementById('email').value);
+                        formData.append('ccemail', document.getElementById('email').value);
+
                         fetch('https://api.web3forms.com/submit', {
                             method: 'POST',
                             body: formData
@@ -320,6 +324,13 @@
                                 email: document.getElementById('email').value
                             }
                         });
+                    });
+
+                    // Redirect to thank-you page when Calendly scheduling is complete
+                    window.addEventListener('message', function(e) {
+                        if (e.origin === 'https://calendly.com' && e.data.event === 'calendly.event_scheduled') {
+                            window.location.href = 'thank-you.html';
+                        }
                     });
                 </script>
 
